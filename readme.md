@@ -1,6 +1,6 @@
-#API VENDAS
+# API VENDAS
 
-###Dependências utilizadas
+### Dependências utilizadas
 
 ``npm install typescript ts-node-dev @types/node tsconfig-paths -D``
 
@@ -11,7 +11,7 @@ ts-node-dev => compila em tempo real apenas durante o desenvolvimento
 tsconfig-paths => para a configuração de caminhos personalizados
 ```
 
-####Criar o arquivo "tsconfig.json" que conterá as configurações do Typescript
+#### Criar o arquivo "tsconfig.json" que conterá as configurações do Typescript
 ```
 tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
 ```
@@ -27,10 +27,10 @@ allowJs => Se você estiver convertendo um projeto JavaScript antigo em TypeScri
 noImplicitAny => Em arquivos TypeScript, não permita que um tipo seja especificado inexplicitamente. Cada tipo precisa ter um tipo específico ou ser declarado explicitamente any.
 ```
 
-####Gerar Build
+#### Gerar Build
 `tsc`
 
-###Extensões Usadas
+### Extensões Usadas
 
 ```
 vscode-icons
