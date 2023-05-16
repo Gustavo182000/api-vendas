@@ -2,16 +2,20 @@
 
 ### Dependências utilizadas
 
-``npm install typescript ts-node-dev @types/node tsconfig-paths -D``
+`npm install typescript ts-node-dev @types/node tsconfig-paths -D`
 
 ```
 typescript
 @types/node => fornece definições de tipo precisas e abrangentes para o ambiente de tempo de execução do Node.js
 ts-node-dev => compila em tempo real apenas durante o desenvolvimento
 tsconfig-paths => para a configuração de caminhos personalizados
+eslint @typescript-eslint/parser  @typescript-eslint/eslint-plugin => utilizar o eslint com typescript.
+prettier => formatador de código para usar em conjunto com o eslint
+eslint-config-prettier@6.15.0 eslint-plugin-prettier@3.2.0 => para usar o Prettier com Eslint
 ```
 
 #### Criar o arquivo "tsconfig.json" que conterá as configurações do Typescript
+
 ```
 tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
 ```
@@ -25,10 +29,10 @@ lib => Esta opção adiciona tipos de ambiente ao nosso projeto, permitindo-nos 
 module => commonjs é o sistema de módulo Node padrão.
 allowJs => Se você estiver convertendo um projeto JavaScript antigo em TypeScript, esta opção permitirá que você inclua arquivos .js no projeto.
 noImplicitAny => Em arquivos TypeScript, não permita que um tipo seja especificado inexplicitamente. Cada tipo precisa ter um tipo específico ou ser declarado explicitamente any.
-eslint @typescript-eslint/parser e @typescript-eslint/eslint-plugin => utilizar o eslint com typescript.
 ```
 
 #### Gerar Build
+
 `tsc`
 
 ### Script dev usando ts-node-dev
@@ -52,3 +56,27 @@ EditorConfig for VS Code
 Docker
 ```
 
+### Prettier parametros
+
+```
+semi: definido como true, significa que o Prettier adicionará ponto-e-vírgulas quando necessário.
+
+trailingComma: definido como all, significa que o Prettier colocará vírgulas no final dos objetos.
+
+singleQuote: definido como true, significa que o Prettier usará automaticamente aspas simples em vez de aspas duplas.
+
+printWidth: definido como 80, especifica que a impressora quebrará todas as linhas que excederem 80 caracteres.
+
+É fundamental que extensão Prettier – Code Formatter esteja instalada no VSCode, pois permitirá a formatação automática do código ao salvar o arquivo.
+```
+
+### eslint-config-prettier
+
+```
+eslint-config-prettier: Desativa todas as regras ESLint que têm o potencial de interferir com as regras do Prettier.
+
+eslint-plugin-prettier: Transforma regras do Prettier em regras ESLint.
+
+Lembre-se de ajustar o arquivo .eslintrc
+
+```
