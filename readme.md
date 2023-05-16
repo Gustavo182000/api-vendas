@@ -30,6 +30,14 @@ noImplicitAny => Em arquivos TypeScript, não permita que um tipo seja especific
 #### Gerar Build
 `tsc`
 
+### Script dev usando ts-node-dev
+
+`"dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"`
+
+### Comando de Start
+
+`npm run dev`
+
 ### Extensões Usadas
 
 ```
