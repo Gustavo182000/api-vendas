@@ -1,1 +1,1 @@
-console.log("Configuração inicial !")
+console.log(`Configuração inicial !`);
