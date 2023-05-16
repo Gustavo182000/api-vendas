@@ -25,6 +25,7 @@ lib => Esta opção adiciona tipos de ambiente ao nosso projeto, permitindo-nos 
 module => commonjs é o sistema de módulo Node padrão.
 allowJs => Se você estiver convertendo um projeto JavaScript antigo em TypeScript, esta opção permitirá que você inclua arquivos .js no projeto.
 noImplicitAny => Em arquivos TypeScript, não permita que um tipo seja especificado inexplicitamente. Cada tipo precisa ter um tipo específico ou ser declarado explicitamente any.
+eslint @typescript-eslint/parser e @typescript-eslint/eslint-plugin => utilizar o eslint com typescript.
 ```
 
 #### Gerar Build
