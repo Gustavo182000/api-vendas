@@ -12,6 +12,9 @@ tsconfig-paths => para a configuração de caminhos personalizados
 eslint @typescript-eslint/parser  @typescript-eslint/eslint-plugin => utilizar o eslint com typescript.
 prettier => formatador de código para usar em conjunto com o eslint
 eslint-config-prettier@6.15.0 eslint-plugin-prettier@3.2.0 => para usar o Prettier com Eslint
+typeorm => ORM para o BD
+reflect-metadata => exigido para trabalhar com o typeorm e ts
+pg => BD Postgre
 ```
 
 #### Criar o arquivo "tsconfig.json" que conterá as configurações do Typescript
