@@ -5,8 +5,9 @@ const AppDataSource = new DataSource({
   host: 'localhost',
   port: 5432,
   username: 'postgres',
-  password: 'docker',
+  password: '123456',
   database: 'apivendas',
+  migrations: ['./migrations/*.ts'],
 });
 AppDataSource.initialize()
   .then(() => {
