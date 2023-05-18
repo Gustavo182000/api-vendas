@@ -99,3 +99,10 @@ A senha deve ser armazenada com criptografia;
 Não pode haver mais de um produto com o mesmo nome;
 Não pode haver um mesmo email sendo usado por mais de um usuário;
 ```
+
+### Migrations
+
+```
+criar migration => npm run typeorm migration:create -n src/shared/typeorm/migrations/{nameMigration}
+executar migration => npm run typeorm -- -d ./src/shared/typeorm/index.ts  migration:run
+```

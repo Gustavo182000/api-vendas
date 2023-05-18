@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+import { CreateProducts1684418106793 } from './migrations/1684418106793-CreateProducts';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -7,7 +8,7 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: '123456',
   database: 'apivendas',
-  migrations: ['./migrations/*.ts'],
+  migrations: [CreateProducts1684418106793],
 });
 AppDataSource.initialize()
   .then(() => {
@@ -16,3 +17,4 @@ AppDataSource.initialize()
   .catch(err => {
     console.error('Error during Data Source initialization', err);
   });
+export default AppDataSource;
