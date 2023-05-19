@@ -22,9 +22,9 @@ class UpdateProductService {
     if (productNameExists && name !== product.name) {
       throw new AppError('Produto com o mesmo nome encontrado');
     }
-    product.name = name;
-    product.price = price;
-    product.quantity = quantity;
+    product.name = name!;
+    product.price = price!;
+    product.quantity = quantity!;
 
     await productRepository.save(product);
 
