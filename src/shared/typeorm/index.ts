@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import { CreateProducts1684418106793 } from './migrations/1684418106793-CreateProducts';
+import Product from './entities/Product';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -8,6 +9,7 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: '123456',
   database: 'apivendas',
+  entities: [Product],
   migrations: [CreateProducts1684418106793],
 });
 AppDataSource.initialize()
