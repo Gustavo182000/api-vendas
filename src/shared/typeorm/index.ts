@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import { CreateProducts1684418106793 } from './migrations/1684418106793-CreateProducts';
+import { CreateUsers1684781088788 } from './migrations/1684781088788-CreateUsers';
 import Product from './entities/Product';
 
 const AppDataSource = new DataSource({
@@ -10,7 +11,7 @@ const AppDataSource = new DataSource({
   password: '123456',
   database: 'apivendas',
   entities: [Product],
-  migrations: [CreateProducts1684418106793],
+  migrations: [CreateProducts1684418106793, CreateUsers1684781088788],
 });
 AppDataSource.initialize()
   .then(() => {
