@@ -5,8 +5,8 @@ import { Request, Response } from 'express';
 class UsersController {
   public async index(req: Request, res: Response): Promise<Response> {
     const listUser = new ListUserService();
-    const listUsers = await listUser.execute();
-    return res.json(listUsers);
+    const users = await listUser.execute();
+    return res.json(users);
   }
   public async create(req: Request, res: Response): Promise<Response> {
     const { name, email, password } = req.body;

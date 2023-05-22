@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { CreateProducts1684418106793 } from './migrations/1684418106793-CreateProducts';
 import { CreateUsers1684781088788 } from './migrations/1684781088788-CreateUsers';
 import Product from './entities/Product';
+import User from './entities/User';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +11,7 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: '123456',
   database: 'apivendas',
-  entities: [Product],
+  entities: [Product, User],
   migrations: [CreateProducts1684418106793, CreateUsers1684781088788],
 });
 AppDataSource.initialize()
