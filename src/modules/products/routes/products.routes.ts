@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import ProductsController from '../controllers/ProductsController';
 import { celebrate, Joi, Segments } from 'celebrate';
-import isAuth from '@modules/users/middlewares/isAuth';
+import isAuth from '@shared/http/middlewares/isAuth';
 
 const productsRouter = Router();
 const productsController = new ProductsController();

@@ -3,6 +3,14 @@ import AppError from '@shared/errors/AppError';
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 
+interface TokenPayload {
+  nome: string;
+  email: string;
+  iat: number;
+  exp: number;
+  sub: string;
+}
+
 function isAuth(req: Request, res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
@@ -13,6 +21,15 @@ function isAuth(req: Request, res: Response, next: NextFunction): void {
 
   try {
     const decodeToken = verify(token[1], auth.jwt.secret);
+    //const sub = decodeToken.sub;
+    const { sub, nome, email } = decodeToken as TokenPayload;
+
+    //Utilizando a sobrescita do objeto request
+    req.user = {
+      id: sub,
+      name: nome,
+      email: email,
+    };
     return next();
   } catch {
     throw new AppError('Token inválido');
