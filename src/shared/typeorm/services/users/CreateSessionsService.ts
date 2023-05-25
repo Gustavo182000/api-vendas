@@ -4,6 +4,7 @@ import User from '@shared/typeorm/entities/User';
 import IUser from '@shared/typeorm/interfaces/IUser';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import authConfig from '@config/auth';
 
 interface IResponse {
   user: User;
@@ -22,10 +23,14 @@ class CreateSessionsService {
     if (!userCompare) {
       throw new AppError('Senha incorreta', 401);
     }
-    const token = sign({ nome: user.name, email: user.email }, '123456', {
-      subject: user.id,
-      expiresIn: '1d',
-    });
+    const token = sign(
+      { nome: user.name, email: user.email },
+      authConfig.jwt.secret,
+      {
+        subject: user.id,
+        expiresIn: authConfig.jwt.expiresIn,
+      },
+    );
     return { user, token };
   }
 }
