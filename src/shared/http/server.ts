@@ -24,9 +24,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
       .json({ status: 'error', message: error.message });
   }
   //Se não for será um erro desconhecido
-  return res
-    .status(500)
-    .json({ status: 'error', message: 'Internal server error' });
+  return res.status(500).json({ status: 'error', message: error.message });
 });
 
 app.listen(port, () => {

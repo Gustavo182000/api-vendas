@@ -23,6 +23,7 @@ class UpdateUserAvatarService {
       const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
       //Se o arquivo existe ele é removido
       if (userAvatarFileExists) {
+        console.log('file Exists');
         await fs.promises.unlink(userAvatarFilePath);
       }
     }
