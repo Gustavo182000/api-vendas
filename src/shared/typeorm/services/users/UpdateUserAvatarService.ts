@@ -19,10 +19,11 @@ class UpdateUserAvatarService {
     }
     //Se o usuário já possue avatar
     if (user.avatar) {
-      const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
-      const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
+      // it will find the file starting with the prefix "<id of user>-Profile" considering that will be unique among all of the avatars uploaded by the user.
+      const userAvatarFile = fs.readdirSync(uploadConfig.directory).find(file => file.startsWith(`${user.id}-Profile`));
       //Se o arquivo existe ele é removido
-      if (userAvatarFileExists) {
+      if (userAvatarFile) {
+        const userAvatarFilePath = path.join(uploadConfig.directory, userAvatarFile);
         console.log('file Exists');
         await fs.promises.unlink(userAvatarFilePath);
       }
