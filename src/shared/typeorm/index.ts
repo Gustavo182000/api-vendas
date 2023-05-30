@@ -3,6 +3,7 @@ import { CreateProducts1684418106793 } from './migrations/1684418106793-CreatePr
 import { CreateUsers1684781088788 } from './migrations/1684781088788-CreateUsers';
 import Product from './entities/Product';
 import User from './entities/User';
+import { CreateUserTokens1685458077237 } from './migrations/1685458077237-CreateUserTokens';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -12,7 +13,11 @@ const AppDataSource = new DataSource({
   password: '123456',
   database: 'apivendas',
   entities: [Product, User],
-  migrations: [CreateProducts1684418106793, CreateUsers1684781088788],
+  migrations: [
+    CreateProducts1684418106793,
+    CreateUsers1684781088788,
+    CreateUserTokens1685458077237,
+  ],
 });
 AppDataSource.initialize()
   .then(() => {
