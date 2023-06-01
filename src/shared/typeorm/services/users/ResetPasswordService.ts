@@ -37,6 +37,7 @@ class ResetPasswordService {
     const hashedPassw = await hash(password!, 8);
     user.password = hashedPassw;
     await userRepository.save(user);
+    await userTokenRepository.delete({ user_id: userToken.user_id });
   }
 }
 
