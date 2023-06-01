@@ -7,13 +7,13 @@ const sessionController = new SessionsController();
 
 sessionsRouter.post(
   '/',
-  sessionController.create,
   celebrate({
     [Segments.BODY]: Joi.object().keys({
       email: Joi.string().email().required(),
       password: Joi.string().required(),
     }),
   }),
+  sessionController.create,
 );
 
 export default sessionsRouter;
