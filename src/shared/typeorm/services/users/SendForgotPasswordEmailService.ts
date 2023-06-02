@@ -1,5 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import AppDataSource from '@shared/typeorm';
+import path from 'path';
 import User from '@shared/typeorm/entities/User';
 import UserToken from '@shared/typeorm/entities/UserToken';
 import EtherealMail from '@config/mail/EtherealMail';
@@ -20,16 +21,28 @@ class SendForgotPasswordEmailService {
 
     const token = await userTokenRepository.create({ user_id: user.id });
     await userTokenRepository.save(token);
-    // console.log(token.token);
+
+    const forgotPasswordTemplate = path.resolve(
+      __dirname,
+      '..',
+      '..',
+      '..',
+      '..',
+      'modules',
+      'users',
+      'views',
+      'forgot_password.hbs',
+    );
+
     const etherealMail = new EtherealMail();
     await etherealMail.sendMail({
       to: { name: user.name, email: user.email },
       subject: '[API VENDAS] Recuperação de senha',
       templateData: {
-        template: `Olá {{name}}: {{token}}`,
+        file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          token: token.token,
+          link: `http://localhost:300/reset_password?${token.token}`,
         },
       },
     });
