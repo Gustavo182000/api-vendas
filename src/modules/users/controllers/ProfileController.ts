@@ -14,7 +14,7 @@ class ProfileController {
     const updateProfile = new UpdateProfileService();
     const user_id = req.user.id;
     const { name, email, password, old_password } = req.body;
-    const user = updateProfile.execute({
+    const user = await updateProfile.execute({
       user_id,
       name,
       email,
