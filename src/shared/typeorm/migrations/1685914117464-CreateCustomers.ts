@@ -40,4 +40,3 @@ export class CreateCustomers1685914117464 implements MigrationInterface {
     await queryRunner.dropTable('customers');
   }
 }
-
