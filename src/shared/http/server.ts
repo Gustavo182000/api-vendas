@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
+import swaggerUi from 'swagger-ui-express';
 import 'express-async-errors';
 import cors from 'cors';
 import { errors } from 'celebrate';
@@ -7,6 +8,7 @@ import routes from './routes';
 import AppError from '@shared/errors/AppError';
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
+import specs from '@config/swagger/swaggerConfig';
 
 const port = process.env.PORT || 3333;
 const app = express();
@@ -14,6 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.directory));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(routes);
 app.use(errors());
 

@@ -8,8 +8,62 @@ const profileController = new ProfileController();
 
 profileRouter.use(isAuth);
 
+/**
+ * @swagger
+ * /profile:
+ *   get:
+ *     summary: Retorna o perfil do usuário
+ *     tags: [User]
+ *     description: Endpoint para retornar o perfil do usuário autenticado.
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Perfil do usuário retornado com sucesso
+ *       '401':
+ *         description: Não autorizado, token de acesso inválido ou ausente
+ *       '500':
+ *         description: Erro interno do servidor
+ */
 profileRouter.get('/', profileController.show);
 
+/**
+ * @swagger
+ * /profile:
+ *   put:
+ *     summary: Atualiza o perfil do usuário
+ *     tags: [User]
+ *     description: Endpoint para atualizar o perfil do usuário autenticado.
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *               passwordConfirmation:
+ *                 type: string
+ *               old_password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Perfil do usuário atualizado com sucesso
+ *       '400':
+ *         description: Requisição inválida
+ *       '401':
+ *         description: Não autorizado, token de acesso inválido ou ausente
+ *       '500':
+ *         description: Erro interno do servidor
+ */
 profileRouter.put(
   '/',
   celebrate({
