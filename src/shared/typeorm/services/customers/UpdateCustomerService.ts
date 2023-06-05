@@ -14,7 +14,7 @@ interface IRequest {
   email: string;
 }
 
-class CreateCustomerService {
+class UpdateCustomerService {
   public async execute({ id, name, email }: IRequest): Promise<ICustommer> {
     const customerRepository = AppDataSource.getRepository(Customers);
     const customer = await customerRepository.findOne({ where: { id } });
@@ -38,4 +38,4 @@ class CreateCustomerService {
   }
 }
 
-export default CreateCustomerService;
+export default UpdateCustomerService;
