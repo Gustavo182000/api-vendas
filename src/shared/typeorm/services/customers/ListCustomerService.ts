@@ -5,7 +5,6 @@ interface ICustommer {
   id: string;
   name: string;
   email: string;
-  password: string;
 }
 
 class ListCustommerService {

@@ -14,8 +14,6 @@ class Customers {
   name: string;
   @Column()
   email: string;
-  @Column()
-  password: string;
   @CreateDateColumn()
   created_at: Date;
   @UpdateDateColumn()
