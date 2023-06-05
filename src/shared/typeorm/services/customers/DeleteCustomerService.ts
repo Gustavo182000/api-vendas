@@ -2,12 +2,6 @@ import AppError from '@shared/errors/AppError';
 import AppDataSource from '@shared/typeorm';
 import Customers from '@shared/typeorm/entities/Customer';
 
-interface ICustommer {
-  id: string;
-  name: string;
-  email: string;
-}
-
 interface IRequest {
   id: string;
 }
