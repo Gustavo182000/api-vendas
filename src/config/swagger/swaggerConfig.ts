@@ -10,6 +10,24 @@ const routesUsersFolder: string = path.resolve(
   'routes',
   '*.ts',
 );
+const routesProductsFolder: string = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'modules',
+  'products',
+  'routes',
+  '*.ts',
+);
+const routesCustomersFolder: string = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'modules',
+  'customers',
+  'routes',
+  '*.ts',
+);
 const options = {
   swaggerDefinition: {
     openapi: '3.0.0',
@@ -24,7 +42,7 @@ const options = {
       },
     ],
   },
-  apis: [routesUsersFolder],
+  apis: [routesUsersFolder, routesProductsFolder, routesCustomersFolder],
 };
 const specs = swaggerJSDoc(options);
 
