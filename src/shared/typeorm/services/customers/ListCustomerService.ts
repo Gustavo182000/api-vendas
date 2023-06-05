@@ -1,6 +1,5 @@
 import AppDataSource from '@shared/typeorm';
 import Customers from '@shared/typeorm/entities/Customer';
-import { Request, Response } from 'express';
 
 interface ICustommer {
   id: string;
