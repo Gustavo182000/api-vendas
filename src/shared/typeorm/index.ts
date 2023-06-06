@@ -9,6 +9,7 @@ import { CreateCustomers1685914117464 } from './migrations/1685914117464-CreateC
 import Customers from './entities/Customer';
 import { CreateOrders1686074102966 } from './migrations/1686074102966-CreateOrders';
 import { AddCustomerIdToOrders1686077107739 } from './migrations/1686077107739-AddCustomerIdToOrders';
+import { CreateOrdersProducts1686079748431 } from './migrations/1686079748431-CreateOrdersProducts';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -25,6 +26,7 @@ const AppDataSource = new DataSource({
     CreateCustomers1685914117464,
     CreateOrders1686074102966,
     AddCustomerIdToOrders1686077107739,
+    CreateOrdersProducts1686079748431,
   ],
 });
 AppDataSource.initialize()
