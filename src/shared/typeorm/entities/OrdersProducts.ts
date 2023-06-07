@@ -7,7 +7,6 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import Customers from './Customer';
 import Order from './Order';
 import Product from './Product';
 

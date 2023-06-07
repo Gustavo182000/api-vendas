@@ -13,6 +13,7 @@ import { CreateOrdersProducts1686079748431 } from './migrations/1686079748431-Cr
 import { AddOrderIdToOrdersProducts1686080196223 } from './migrations/1686080196223-AddOrderIdToOrdersProducts';
 import { AddProductIdToOrdersProducts1686080734453 } from './migrations/1686080734453-AddProductIdToOrdersProducts';
 import Order from './entities/Order';
+import OrdersProducts from './entities/OrdersProducts';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -21,7 +22,7 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: '123456',
   database: 'apivendas',
-  entities: [Product, User, UserToken, Customers, Order],
+  entities: [Product, User, UserToken, Customers, Order, OrdersProducts],
   migrations: [
     CreateProducts1684418106793,
     CreateUsers1684781088788,
