@@ -61,13 +61,13 @@ class CreateOrderService {
     const serializeProducts = products.map(product => {
       const foundProduct = existsproducts.find(p => p.id === product.id);
       return {
-        product_id: product.id,
+        id: product.id, // corrigido para 'id' em vez de 'product_id'
         quantity: product.quantity,
         price: foundProduct?.price,
       };
     });
 
-    const order = orderRepository.create({
+    const order = await orderRepository.create({
       customer: customerExists,
       order_products: serializeProducts,
     });

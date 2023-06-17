@@ -3,14 +3,14 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import OrdersProducts from './OrdersProducts';
 
 @Entity('products')
 class Product {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column()
   name: string;

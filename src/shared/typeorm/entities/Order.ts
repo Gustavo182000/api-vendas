@@ -4,7 +4,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import Customers from './Customer';
@@ -12,7 +12,7 @@ import OrdersProducts from './OrdersProducts';
 
 @Entity('order')
 class Order {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @ManyToOne(() => Customers)
