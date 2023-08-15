@@ -4,6 +4,8 @@ import User from '@shared/typeorm/entities/User';
 import path from 'path';
 import uploadConfig from '@config/upload';
 import fs from 'fs';
+import RedisCache from '@shared/cache/RedisCache';
+
 interface IRequest {
   user_id: string;
   avatarFilename: string;
@@ -12,6 +14,7 @@ interface IRequest {
 class UpdateUserAvatarService {
   public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
     const userRepository = AppDataSource.getRepository(User);
+    const redisCache = new RedisCache();
 
     const user = await userRepository.findOne({ where: { id: user_id } });
     if (!user) {
@@ -35,6 +38,8 @@ class UpdateUserAvatarService {
       }
     }
     user.avatar = avatarFilename;
+
+    await redisCache.invalidate('users');
     await userRepository.save(user);
     return user;
   }

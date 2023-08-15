@@ -1,6 +1,8 @@
 import AppError from '@shared/errors/AppError';
 import AppDataSource from '@shared/typeorm';
 import User from '@shared/typeorm/entities/User';
+import RedisCache from '@shared/cache/RedisCache';
+
 import { compare, hash } from 'bcrypt';
 
 interface IRequest {
@@ -20,6 +22,8 @@ class UpdateProfileService {
     old_password,
   }: IRequest): Promise<User> {
     const userRepository = AppDataSource.getRepository(User);
+    const redisCache = new RedisCache();
+
     const user = await userRepository.findOne({ where: { id: user_id } });
 
     if (!user) {
@@ -48,6 +52,7 @@ class UpdateProfileService {
 
     user.name = name;
     user.email = email;
+    await redisCache.invalidate('users');
     await userRepository.save(user);
 
     return user;

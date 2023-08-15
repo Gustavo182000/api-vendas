@@ -11,7 +11,7 @@ export default {
     redis: {
       host: 'localhost',
       port: 6379,
-      password: '4n4rc0',
+      password: '',
     },
   },
   driver: 'redis',
