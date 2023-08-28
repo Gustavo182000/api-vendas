@@ -10,12 +10,14 @@ import '@shared/typeorm';
 import uploadConfig from '@config/upload';
 import specs from '@config/swagger/swaggerConfig';
 import { pagination } from 'typeorm-pagination';
+import rateLimiter from './middlewares/rateLimiter';
 
 const port = process.env.PORT || 3333;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(rateLimiter);
 app.use(pagination);
 app.use('/files', express.static(uploadConfig.directory));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
